@@ -1,6 +1,10 @@
 <script setup>
-import {ref, reactive} from 'vue'
-import { ElMessage } from 'element-plus'
+import {ref, reactive, inject} from 'vue'
+import {ElMessage} from 'element-plus'
+import {useRouter} from 'vue-router'
+import {useLoginStore} from "../stores/login.js"
+
+const router = useRouter()
 
 defineExpose({
   name: 'UserLogin'
@@ -41,19 +45,38 @@ const rules = reactive({
 })
 
 const ruleFormRef = ref()
+const axios = inject('axios')  // inject axios
 
 async function login(formEl) {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
-      this.axios.post('/user/login', form.value)
+      console.log('submit', fields)
+      axios.post('/user/login', form.value)
           .then(function (response) {
-            alert(response)
+            console.log(response)
+            if (response.state === 0) {
+              sessionStorage.setItem('user', JSON.stringify(response.data))
+              useLoginStore().setLogin(response.data.account, response.data.level, true)
+              router.push({
+                name: "UserHome",
+                params: {
+                  account: response.data.account
+                }
+              })
+            } else {
+              ElMessage({
+                showClose: true,
+                message: response.message,
+                type: 'error'
+              })
+            }
           })
           .catch(function (error) {
-            alert(error)
+            console.log(error)
           })
     } else {
+      console.log('error submit!', fields)
       ElMessage({
         showClose: true,
         message: '输入的信息不符合要求',
@@ -74,7 +97,7 @@ async function login(formEl) {
         <el-input v-model="form.password" type="password" show-password/>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="login(ruleFormRef)">登录</el-button>
+        <el-button type="primary" plain @click="login(ruleFormRef)">登录</el-button>
       </el-form-item>
     </el-form>
   </div>

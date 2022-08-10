@@ -13,6 +13,8 @@ import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+import service from "./utils/request";
+
 /**
  * 设置axios请求的地址默认是'/api',这样根据第一步中配置的会将/api替
  * 换为'http://localhost:8080/'
@@ -24,7 +26,7 @@ const app = createApp(App)
 /**
  * 引入vue-axios，一个对axios的轻度封装
  */
-app.use(VueAxios, axios)
+app.use(VueAxios, service)
 app.provide('axios', app.config.globalProperties.axios)  // provide 'axios'
 
 /**
