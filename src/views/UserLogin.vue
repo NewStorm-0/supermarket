@@ -20,7 +20,7 @@ const rules = reactive({
     {
       required: true,
       message: '请输入卡号',
-      trigger: 'blur'
+      trigger: 'blur',
     },
     {
       min: 8,
@@ -109,10 +109,10 @@ async function login(formEl) {
   <div class="border-div">
     <el-form :model="form" :rules="rules" ref="ruleFormRef" class="my-form">
       <el-form-item label="卡号" prop="account">
-        <el-input v-model="form.account"/>
+        <el-input v-model="form.account" minlength="8" maxlength="8" @input ="form.account=form.account.replace(/\D/,'')"/>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" type="password" show-password/>
+        <el-input v-model="form.password" type="password" show-password minlength="6" maxlength="25"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" plain @click="login(ruleFormRef)">登录</el-button>
