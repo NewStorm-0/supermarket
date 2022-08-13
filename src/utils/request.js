@@ -11,8 +11,10 @@ const service = axios.create({
 service.interceptors.request.use(config => {
     console.log('request 拦截器使用成功')
     config.headers['Content-Type'] = 'application/json;charset=utf-8';
-
-    // config.headers['token'] = user.token;  // 设置请求头
+    let token = sessionStorage.getItem("token")
+    if (token) {
+        config.headers['Authorization'] = 'Bearer ' + token;  // 设置请求头
+    }
     return config
 }, error => {
     console.log(error)

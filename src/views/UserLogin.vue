@@ -56,14 +56,32 @@ async function login(formEl) {
           .then(function (response) {
             console.log(response)
             if (response.state === 0) {
-              sessionStorage.setItem('user', JSON.stringify(response.data))
-              useLoginStore().setLogin(response.data.account, response.data.level, true)
-              router.push({
-                name: "UserHome",
-                params: {
-                  account: response.data.account
-                }
-              })
+              sessionStorage.setItem('user', JSON.stringify(response.data.user))
+              sessionStorage.setItem('token', response.data.authorization)
+              //再次发出请求去请求会员等级信息
+              axios.get('/membership_level/all')
+                  .then(function (levelResponse) {
+                    console.log(levelResponse)
+                    if (levelResponse.state === 0) {
+                      sessionStorage.setItem('membership_level_all', JSON.stringify(levelResponse.data))
+                      useLoginStore().setLogin(response.data.user.account, response.data.user.level, true)
+                      router.push({
+                        name: "UserHome",
+                        params: {
+                          account: response.data.user.account
+                        }
+                      })
+                    } else {
+                      ElMessage({
+                        showClose: true,
+                        message: response.message,
+                        type: 'error'
+                      })
+                    }
+                  })
+                  .catch(function (error) {
+                    console.log(error)
+                  })
             } else {
               ElMessage({
                 showClose: true,

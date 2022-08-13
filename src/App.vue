@@ -29,6 +29,7 @@ onMounted(() => {
     console.log('load')
     const login = JSON.parse(sessionStorage.getItem('login')).login
     useLoginStore().setLogin(login.account, login.level, login.login)
+    console.log(sessionStorage.getItem('membership_level_all'))
   }
 })
 console.log(login)
