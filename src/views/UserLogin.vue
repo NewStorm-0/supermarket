@@ -103,16 +103,17 @@ async function login(formEl) {
     }
   })
 }
+
 </script>
 
 <template>
   <div class="border-div">
     <el-form :model="form" :rules="rules" ref="ruleFormRef" class="my-form">
       <el-form-item label="卡号" prop="account">
-        <el-input v-model="form.account" minlength="8" maxlength="8" @input ="form.account=form.account.replace(/\D/,'')"/>
+        <el-input v-model="form.account" maxlength="8" @input ="form.account=form.account.replace(/\D/,'')"/>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" type="password" show-password minlength="6" maxlength="25"/>
+        <el-input v-model="form.password" type="password" show-password maxlength="25"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" plain @click="login(ruleFormRef)">登录</el-button>

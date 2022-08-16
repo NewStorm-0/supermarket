@@ -4,7 +4,9 @@
       <el-menu default-active="1">
         <el-sub-menu index="1">
           <template #title>
-            <el-icon><User /></el-icon>
+            <el-icon>
+              <User/>
+            </el-icon>
             <span>用户啊对对对</span>
           </template>
 
@@ -15,6 +17,7 @@
       这里是用户首页捏
       <p>您的 account 为 {{ route.params.account }}</p>
       <p>你的会员等级为 {{ user.level }}</p>
+      <el-button @click="test">兑换</el-button>
     </el-main>
   </el-container>
 </template>
@@ -31,6 +34,22 @@ defineExpose({
 })
 
 const user = JSON.parse(sessionStorage.getItem('user'))
+
+const axios = inject('axios')  // inject axios
+
+const testData = {
+  params: {
+    'couponType': 1,
+    'number': 2
+  }
+}
+const test = () => {
+  axios.get('/user/redeem', testData).then((res) => {
+    console.log(res)
+  }).catch((err) => {
+    console.log(err)
+  })
+}
 </script>
 
 <style scoped>
