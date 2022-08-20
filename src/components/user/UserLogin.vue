@@ -3,7 +3,7 @@ import {ref, reactive, inject} from 'vue'
 import {ElMessage} from 'element-plus'
 import {useRouter} from 'vue-router'
 import {userStore} from "../../stores/userStore";
-import Header from "./Header.vue";
+import Header from "./UserHeader.vue";
 
 const router = useRouter()
 
@@ -115,6 +115,12 @@ async function login(formEl) {
     </el-header>
 
     <el-main>
+      <router-link to="/" class="my-router-link">
+        <el-icon>
+          <Back/>
+        </el-icon>
+        返回初始页
+      </router-link>
       <div class="border-div">
         <el-form :model="form" :rules="rules" ref="ruleFormRef" class="my-form">
           <el-form-item class="my-form-item" label="卡号" prop="account">
@@ -138,7 +144,7 @@ async function login(formEl) {
 
 </template>
 
-<style>
+<style scoped>
 .my-form {
   text-align: center;
   text-align: -webkit-center;
@@ -164,6 +170,13 @@ html.dark .my-form {
   margin-top: 8rem;
 }
 
+.my-router-link {
+  color: #d3dce6;
+  text-decoration: none;
+}
+</style>
+
+<style>
 html.dark .el-header {
   background-color: rgba(34, 34, 35, 0.9);
 }

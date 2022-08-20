@@ -38,7 +38,7 @@ function logOut() {
 
 
 defineExpose({
-  name: 'Header',
+  name: 'UserHeader',
 })
 </script>
 

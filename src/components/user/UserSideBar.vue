@@ -50,7 +50,7 @@
 <script setup>
 
 defineExpose({
-  name: "SideBar"
+  name: "UserSideBar"
 })
 </script>
 

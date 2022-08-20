@@ -1,12 +1,12 @@
 <template>
   <el-container>
     <el-header>
-      <Header/>
+      <UserHeader/>
     </el-header>
 
     <el-container>
       <el-aside width="12.5rem" class="my-el-aside">
-        <SideBar/>
+        <UserSideBar/>
       </el-aside>
       <el-main class="my-el-main">
         <router-view/>
@@ -16,8 +16,8 @@
 </template>
 
 <script setup>
-import Header from "../components/user/Header.vue";
-import SideBar from "../components/user/SideBar.vue";
+import UserHeader from "../components/user/UserHeader.vue";
+import UserSideBar from "../components/user/UserSideBar.vue";
 
 defineExpose({
   name: "UserPage"
@@ -43,6 +43,7 @@ html.dark {
   .my-el-aside {
     background-color: rgba(32, 29, 21, 0.6);
   }
+
   .my-el-main {
     background-color: rgba(32, 29, 21, 0.6);
   }
