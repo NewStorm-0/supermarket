@@ -7,21 +7,22 @@ import {ElMessage, ElMessageBox} from 'element-plus'
 const router = useRouter()
 
 defineExpose({
-  name: 'UserHome'
+  name: 'UserIndex'
 })
 
 const axios = inject('axios')  // inject axios
-let couponNumber = ref(null)
-axios.get('/user_coupon/user')
-    .then(function (response) {
-      couponNumber.value = 0
-      for (const responseElement of response.data) {
-        couponNumber.value += responseElement.quantity
-      }
-    })
-    .catch(function (error) {
-      console.log(error)
-    })
+
+// let couponNumber = ref(null)
+// axios.get('/user_coupon/user')
+//     .then(function (response) {
+//       couponNumber.value = 0
+//       for (const responseElement of response.data) {
+//         couponNumber.value += responseElement.quantity
+//       }
+//     })
+//     .catch(function (error) {
+//       console.log(error)
+//     })
 
 const level = computed(() => {
   const membershipLevel = JSON.parse(sessionStorage.getItem("membership_level_all"))
@@ -73,6 +74,42 @@ function recharge() {
   })
 }
 
+</script>
+
+<script>
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      couponNumber: null,
+      loading: true
+    }
+  },
+  created() {
+    // watch 路由的参数，以便再次获取数据
+    this.fetchData()
+  },
+  methods: {
+    fetchData() {
+      const that = this
+      this.axios.get('/user_coupon/user')
+          .then(function (response) {
+            console.log(response)
+            let temp = 0
+            for (const responseElement of response.data) {
+              temp += responseElement.quantity
+            }
+            console.log(temp)
+            that.couponNumber = temp
+            that.loading = false
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+    }
+  },
+}
 </script>
 
 <template>
@@ -144,7 +181,7 @@ function recharge() {
     </el-col>
     <el-col :span="3"/>
     <el-col :span="7">
-      <el-card class="box-card">
+      <el-card class="box-card" v-loading="loading">
         <template #header>
           <div class="card-header">
             <span class="text">你的满减券</span>
@@ -197,41 +234,7 @@ html.dark {
   .button {
     color: #a5cbe0;
   }
-
-  .level1 {
-    background-color: silver;
-    filter: brightness(0.65) saturate(1.25);
-  }
-
-  .level2 {
-    background-color: #FFF934;
-    filter: brightness(0.65) saturate(1.25);
-  }
-
-  .level3 {
-    background-color: #B3D3E9;
-    filter: brightness(0.65) saturate(1.25);
-  }
-
-  .level4 {
-    background-color: darkorchid;
-    filter: brightness(0.65) saturate(1.25);
-  }
 }
 
-.level1 {
-  background-color: silver;
-}
-
-.level2 {
-  background-color: #FFF934;
-}
-
-.level3 {
-  background-color: #B3D3E9;
-}
-
-.level4 {
-  background-color: darkorchid;
-}
+@import "../../assets/membership_level";
 </style>

@@ -68,7 +68,7 @@ async function login(formEl) {
                       userStore.value.user = response.data.user
                       userStore.value.membershipLevel = levelResponse.data
                       router.push({
-                        name: "UserHome",
+                        name: "UserIndex",
                         params: {
                           account: response.data.user.account
                         }

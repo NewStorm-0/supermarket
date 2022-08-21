@@ -1,0 +1,37 @@
+.level1 {
+  background-color: silver;
+}
+
+.level2 {
+  background-color: #FFF934;
+}
+
+.level3 {
+  background-color: #B3D3E9;
+}
+
+.level4 {
+  background-color: darkorchid;
+}
+
+html.dark {
+  .level1 {
+    background-color: silver;
+    filter: brightness(0.65) saturate(1.25);
+  }
+
+  .level2 {
+    background-color: #FFF934;
+    filter: brightness(0.65) saturate(1.25);
+  }
+
+  .level3 {
+    background-color: #B3D3E9;
+    filter: brightness(0.65) saturate(1.25);
+  }
+
+  .level4 {
+    background-color: darkorchid;
+    filter: brightness(0.65) saturate(1.25);
+  }
+}

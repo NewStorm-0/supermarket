@@ -18,9 +18,18 @@
 <script setup>
 import UserHeader from "../components/user/UserHeader.vue";
 import UserSideBar from "../components/user/UserSideBar.vue";
+import {onUnmounted} from "vue";
+import {userStore} from "../stores/userStore";
 
 defineExpose({
   name: "UserPage"
+})
+
+onUnmounted(() => {
+  sessionStorage.clear()
+  userStore.value.user = null
+  userStore.value.membershipLevel = null
+  console.log('注销成功')
 })
 </script>
 

@@ -27,10 +27,8 @@ const level = computed(() => {
   return membershipLevel[userStore.value.user.level - 1].name
 })
 const router = useRouter()
+
 function logOut() {
-  sessionStorage.clear()
-  userStore.value.user = null
-  userStore.value.membershipLevel = null
   router.push({
     name: "UserLogin"
   })
