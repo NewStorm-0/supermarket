@@ -8,8 +8,6 @@ import UserPage from "../views/UserPage.vue"
 import InitHome from "../views/InitHome.vue"
 import UserPurchaseQuery from "../views/PurchaseQuery.vue"
 import UserTradeQuery from "../views/TradeQuery.vue"
-import UserMoneyManage from "../views/MoneyManage.vue"
-import regist from "../views/regist.vue"
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +41,11 @@ const router = createRouter({
                     path: 'privilege',
                     name: 'UserPrivilege',
                     component: () => import('../components/user/UserPrivilege.vue')
+                },
+                {
+                    path: 'coupon',
+                    name: 'UserCoupon',
+                    component: () => import('../components/user/UserCoupon.vue')
                 }
             ]
         },
@@ -74,16 +77,6 @@ const router = createRouter({
             name: "TradeQuery",
             component: UserTradeQuery
         },
-        {
-            path: '/user/:account/charge',
-            name: 'MoneyManage',
-            component: UserMoneyManage
-        },
-        {
-            path: '/user/regist',
-            name: 'Regist',
-            component: regist
-        }
     ]
 })
 

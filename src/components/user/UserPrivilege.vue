@@ -9,14 +9,13 @@ const membershipLevel = JSON.parse(sessionStorage.getItem("membership_level_all"
 </script>
 
 <template>
-  <div>
-    <el-container>
+    <el-container class="my-el-container">
       <el-aside width="250px">
         <div class="left-top">您的会员等级</div>
-        <el-card class="box-card" :class="'level' + userStore.user.level">
+        <el-card :class="'level' + userStore.user.level">
           <template #header>
             <div class="card-header">
-              <span class="text">
+              <span>
                 {{ membershipLevel[userStore.user.level - 1].name }}会员
               </span>
             </div>
@@ -32,7 +31,7 @@ const membershipLevel = JSON.parse(sessionStorage.getItem("membership_level_all"
       <div style="width: 30px"/>
       <el-main class="my-el-main">
         <div class="right-top">会员等级及权益一览</div>
-        <el-scrollbar height="23rem" always="true" class="scroll">
+        <el-scrollbar height="23rem" class="scroll">
           <el-space wrap>
             <el-card
                 v-for="i in membershipLevel"
@@ -60,7 +59,6 @@ const membershipLevel = JSON.parse(sessionStorage.getItem("membership_level_all"
         </el-scrollbar>
       </el-main>
     </el-container>
-  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -93,12 +91,18 @@ div.clause {
 }
 
 .my-el-main {
-  overflow-y: hidden;
+  height: 100%;
+  //overflow-y: hidden;
 }
 
 .scroll {
   padding: 10px;
   border-radius: 10px;
+  height: auto;
+}
+
+.my-el-container {
+  height: 100%;
 }
 
 @import "../../assets/membership_level";

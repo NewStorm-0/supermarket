@@ -10,7 +10,7 @@
         </el-icon>
         已有账号？返回初始页
       </router-link>
-      <div class="border-div" v-if="loaded">
+      <div class="border-div" v-loading="loading">
         <el-form ref="formRef"
                  :model="form"
                  :rules="rules"
@@ -44,10 +44,9 @@
           <el-form-item label="缴纳金额" prop="balance">
             <el-input v-model.number="form.balance" disabled/>
           </el-form-item>
-          <div style="margin-bottom: -20px; width: 100%" />
           <el-form-item>
-            <div style="width: 25px" />
-            <el-button type="primary" @click="register(formRef)" size="large">注册</el-button>
+            <div style="width: 25px"/>
+            <el-button type="primary" @click="register(formRef)" >注册</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -56,25 +55,34 @@
 </template>
 
 <script setup>
-import {ref, reactive, inject, onMounted} from 'vue'
-import {ElMessageBox} from 'element-plus'
+import {ref, reactive, inject, onBeforeMount} from 'vue'
+import {ElMessage, ElMessageBox} from 'element-plus'
 import {useRouter} from 'vue-router'
 import UserHeader from "../components/user/UserHeader.vue";
 
 const axios = inject('axios')  // inject axios
-const membershipLevels = ref()
-const loaded = ref(false)
-axios.get('membership_level/all')
-    .then((response) => {
-      membershipLevels.value = response.data
-      form.value.level = membershipLevels.value[0].type
-      form.value.balance = membershipLevels.value[0].requiredAmount
-      loaded.value = true
-    })
-    .catch((error) => console.log(error))
 
 defineExpose({
-  name: 'UserLogin'
+  name: 'UserLogin',
+})
+const membershipLevels = ref(null)
+const loading = ref(true)
+onBeforeMount(() => {
+  axios.get('membership_level/all')
+      .then((response) => {
+        if (response.state === 0) {
+          membershipLevels.value = response.data
+          form.value.level = membershipLevels.value[0].type
+          form.value.balance = membershipLevels.value[0].requiredAmount
+          loading.value = false
+        } else {
+          ElMessage({
+            type: 'error',
+            message: response.message
+          })
+        }
+      })
+      .catch((error) => console.log(error))
 })
 
 const formRef = ref()

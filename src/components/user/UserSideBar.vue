@@ -23,7 +23,7 @@
         </el-icon>
         <span>满减券管理</span>
       </template>
-      <el-menu-item index="3-1">你的满减券</el-menu-item>
+      <el-menu-item index="coupon">你的满减券</el-menu-item>
       <el-menu-item index="3-2">满减券兑换</el-menu-item>
     </el-sub-menu>
     <el-menu-item index="4">
@@ -56,11 +56,6 @@ defineExpose({
 })
 const route = useRoute()
 const userLocation = computed(() => {
-  // if (route.name === 'UserIndex') {
-  //   return 'index'
-  // } else if (route.name === 'UserInformation') {
-  //   return 'information'
-  // }
   let path = route.path
   path = path.substring(6)
   return  path.substring(path.indexOf('/') + 1)

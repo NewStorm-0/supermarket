@@ -12,18 +12,6 @@ defineExpose({
 
 const axios = inject('axios')  // inject axios
 
-// let couponNumber = ref(null)
-// axios.get('/user_coupon/user')
-//     .then(function (response) {
-//       couponNumber.value = 0
-//       for (const responseElement of response.data) {
-//         couponNumber.value += responseElement.quantity
-//       }
-//     })
-//     .catch(function (error) {
-//       console.log(error)
-//     })
-
 const level = computed(() => {
   const membershipLevel = JSON.parse(sessionStorage.getItem("membership_level_all"))
   // const membershipLevel = userStore.value.membershipLevel
@@ -77,8 +65,6 @@ function recharge() {
 </script>
 
 <script>
-import axios from "axios";
-
 export default {
   data() {
     return {

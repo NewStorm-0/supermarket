@@ -1,37 +1,38 @@
 .level1 {
-  background-color: silver;
+  background-image: linear-gradient(to bottom right,
+          #e7e7e7, #ACAAAB, #9d9d9d, #ACAAAB, #e7e7e7);
 }
 
 .level2 {
-  background-color: #FFF934;
+  background-image: linear-gradient(to bottom right,
+          #A97E02, #B89319, #EDCA61, #D5B247, #BD9723);
+  //#CBAD79, #E5CEA6, #E6BE7E, #DBAC63, #BB8634);
 }
 
 .level3 {
-  background-color: #B3D3E9;
+  background-image: linear-gradient(to bottom right,
+          #BDC9D5, #7B87BF, #778EC2, #607FB7, #5474AD);
 }
 
 .level4 {
-  background-color: darkorchid;
+  background-image: linear-gradient(to bottom right,
+  #9C4D58, #AA628C, #C37D91, #D49498, #AC6586, #8F5599, #6E4998, #42316F);
 }
 
 html.dark {
   .level1 {
-    background-color: silver;
     filter: brightness(0.65) saturate(1.25);
   }
 
   .level2 {
-    background-color: #FFF934;
     filter: brightness(0.65) saturate(1.25);
   }
 
   .level3 {
-    background-color: #B3D3E9;
     filter: brightness(0.65) saturate(1.25);
   }
 
   .level4 {
-    background-color: darkorchid;
     filter: brightness(0.65) saturate(1.25);
   }
 }
