@@ -8,7 +8,7 @@
 </template>
 
 <style scoped>
-div .my-div-app {
+div.my-div-app {
   height: 100%;
   width: 100%;
   position: fixed;

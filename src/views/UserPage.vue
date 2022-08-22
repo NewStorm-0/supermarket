@@ -1,10 +1,10 @@
 <template>
-  <el-container>
+  <el-container class="my-el-container">
     <el-header>
       <UserHeader/>
     </el-header>
 
-    <el-container>
+    <el-container class="my-el-container">
       <el-aside width="12.5rem" class="my-el-aside">
         <UserSideBar/>
       </el-aside>
@@ -46,6 +46,11 @@ onUnmounted(() => {
   background-color: rgba(205, 214, 222, 0.6);
   margin: 10px;
   padding: 25px;
+  height: auto;
+}
+
+.my-el-container {
+  height: 100%;
 }
 
 html.dark {

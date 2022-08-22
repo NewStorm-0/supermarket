@@ -27,7 +27,7 @@ export default {
 
     Promise.all([getCouponInfo(), getUserCoupon()])
         .then(function (response) {
-          console.log(response)
+          //console.log(response)
           if (response[0].state === 0) {
             if (response[1].state === 0) {
               for (const userCouponResponse of response[1].data) {  // 会员持有的

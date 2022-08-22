@@ -46,6 +46,11 @@ const router = createRouter({
                     path: 'coupon',
                     name: 'UserCoupon',
                     component: () => import('../components/user/UserCoupon.vue')
+                },
+                {
+                    path: 'redeem',
+                    name: 'UserRedeem',
+                    component: () => import('../components/user/UserRedeem.vue')
                 }
             ]
         },

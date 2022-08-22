@@ -24,7 +24,7 @@
         <span>满减券管理</span>
       </template>
       <el-menu-item index="coupon">你的满减券</el-menu-item>
-      <el-menu-item index="3-2">满减券兑换</el-menu-item>
+      <el-menu-item index="redeem">满减券兑换</el-menu-item>
     </el-sub-menu>
     <el-menu-item index="4">
       <el-icon>
