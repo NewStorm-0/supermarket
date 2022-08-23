@@ -58,6 +58,11 @@ const router = createRouter({
                     path: 'bill_details',
                     name: 'UserBillDetails',
                     component: () => import('../components/user/UserBillDetails.vue')
+                },
+                {
+                    path: 'commodity',
+                    name: 'UserCommodity',
+                    component: () => import('../components/user/UserCommodity.vue')
                 }
             ]
         },

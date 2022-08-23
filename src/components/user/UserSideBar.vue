@@ -38,7 +38,7 @@
       </el-icon>
       <span>流水查询</span>
     </el-menu-item>
-    <el-menu-item index="6">
+    <el-menu-item index="commodity">
       <el-icon>
         <Goods/>
       </el-icon>

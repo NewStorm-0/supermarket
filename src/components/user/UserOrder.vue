@@ -44,6 +44,22 @@ export default {
                 }
               }
               that.loading = false
+
+              /**
+               * 测试
+               */
+              const jjj = []
+              for (let i = 0; i < 100; i++) {
+                jjj.push({
+                  time: i,
+                  id: i,
+                  paymentAmount: i,
+                  rewardPoints: i,
+                  couponInfo: i,
+                })
+              }
+              that.UserOrderList = jjj
+
             } else {
               ElMessage({
                 type: 'error',
@@ -164,7 +180,7 @@ export default {
               class="my-el-table"
               v-loading="loading"
               header-align="center"
-              max-height="calc(100% -75px)"
+              max-height="calc(100vh - 200px)"
               highlight-current-row
               stripe
               lazy
@@ -216,7 +232,8 @@ export default {
   /* background:url("https://s1.ax1x.com/2022/08/14/vUmrWD.jpg"); */
   /* background:url("D:\0学习\vue学习and实践\supermarket\src\assets\logo.svg"); */
   /*width: auto;*/
-  /*height: 100%;*/
+  /*height: auto;*/
+  /*max-height: calc(100vh - 180px);*/
 }
 
 h1 {
