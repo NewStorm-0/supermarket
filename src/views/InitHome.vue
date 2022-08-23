@@ -20,7 +20,7 @@ export default {
       this.$router.push({path: '/user/register'});
     },
     toUserLogin() {
-      console.log(this);
+      // console.log(this);
       this.$router.push({path: '/user/login'});
     },
     toAdministratorLogin() {

@@ -4,9 +4,7 @@ import NotFound from "../views/NotFound.vue"
 import UserIndex from "../components/user/UserIndex.vue"
 import UserRegister from "../views/UserRegister.vue"
 import UserPage from "../views/UserPage.vue"
-
 import InitHome from "../views/InitHome.vue"
-import UserTradeQuery from "../views/TradeQuery.vue"
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -55,6 +53,11 @@ const router = createRouter({
                     path: 'order',
                     name: 'UserOrder',
                     component: () => import('../components/user/UserOrder.vue')
+                },
+                {
+                    path: 'bill_details',
+                    name: 'UserBillDetails',
+                    component: () => import('../components/user/UserBillDetails.vue')
                 }
             ]
         },
@@ -75,11 +78,6 @@ const router = createRouter({
             path: '/',
             name: "InitHome",
             component: InitHome
-        },
-        {
-            path: '/user/:account/trade',
-            name: "TradeQuery",
-            component: UserTradeQuery
         },
     ]
 })

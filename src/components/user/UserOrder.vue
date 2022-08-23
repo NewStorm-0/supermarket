@@ -186,7 +186,7 @@ export default {
     </el-table>
   </div>
   <el-dialog v-model="commoditiesDialogVisible" center draggable :modal="false"
-             title="订单商品详情" :before-close="handleClose" width="530px" class="dialog">
+             title="订单商品详情" :before-close="handleClose" width="530px">
     <el-table :data="currentOrderCommoditiesList"
               class="commodity-table"
               v-loading="dialogTableLoading"
@@ -226,7 +226,7 @@ h1 {
 .my-el-table {
   height: auto;
   margin: auto;
-  width: 750px;
+  max-width: 750px;
 }
 
 .text-button {
@@ -236,9 +236,5 @@ h1 {
 .commodity-table {
   max-width: 480px;
   margin: auto;
-}
-
-.dialog {
-  max-height: 30%;
 }
 </style>

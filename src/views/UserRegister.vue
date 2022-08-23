@@ -10,8 +10,9 @@
         </el-icon>
         已有账号？返回初始页
       </router-link>
-      <div class="border-div" v-loading="loading">
+      <div class="border-div">
         <el-form ref="formRef"
+                 v-loading="loading"
                  :model="form"
                  :rules="rules"
                  status-icon
@@ -59,9 +60,7 @@ import {ref, reactive, inject, onBeforeMount} from 'vue'
 import {ElMessage, ElMessageBox} from 'element-plus'
 import {useRouter} from 'vue-router'
 import UserHeader from "../components/user/UserHeader.vue";
-
 const axios = inject('axios')  // inject axios
-
 defineExpose({
   name: 'UserLogin',
 })
@@ -84,7 +83,6 @@ onBeforeMount(() => {
       })
       .catch((error) => console.log(error))
 })
-
 const formRef = ref()
 const form = ref({
   name: '',

@@ -32,7 +32,7 @@
       </el-icon>
       <span>订单一览</span>
     </el-menu-item>
-    <el-menu-item index="5">
+    <el-menu-item index="bill_details">
       <el-icon>
         <List/>
       </el-icon>
