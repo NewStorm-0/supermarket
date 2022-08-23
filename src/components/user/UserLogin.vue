@@ -55,14 +55,14 @@ async function login(formEl) {
       console.log('submit', fields)
       axios.post('/user/login', form.value)
           .then(function (response) {
-            console.log(response)
+            //console.log(response)
             if (response.state === 0) {
               sessionStorage.setItem('user', JSON.stringify(response.data.user))
               sessionStorage.setItem('token', response.data.authorization)
               //再次发出请求去请求会员等级信息
               axios.get('/membership_level/all')
                   .then(function (levelResponse) {
-                    console.log(levelResponse)
+                    //console.log(levelResponse)
                     if (levelResponse.state === 0) {
                       sessionStorage.setItem('membership_level_all', JSON.stringify(levelResponse.data))
                       userStore.value.user = response.data.user

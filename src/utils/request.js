@@ -9,7 +9,7 @@ const service = axios.create({
 // 可以自请求发送前对请求做一些处理
 // 比如统一加token，对请求参数统一加密
 service.interceptors.request.use(config => {
-    console.log('request 拦截器使用成功')
+    //console.log('request 拦截器使用成功')
     config.headers['Content-Type'] = 'application/json;charset=utf-8';
     let token = sessionStorage.getItem("token")
     if (token) {
@@ -25,7 +25,7 @@ service.interceptors.request.use(config => {
 // 可以在接口响应后统一处理结果
 service.interceptors.response.use(
     response => {
-        console.log('response 拦截器使用成功')
+        //console.log('response 拦截器使用成功')
         let res = response.data;
         // 如果是返回的文件
         if (response.config.responseType === 'blob') {

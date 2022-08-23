@@ -81,12 +81,12 @@ export default {
       const that = this
       this.axios.get('/user_coupon/user')
           .then(function (response) {
-            console.log(response)
+            //console.log(response)
             let temp = 0
             for (const responseElement of response.data) {
               temp += responseElement.quantity
             }
-            console.log(temp)
+            //console.log(temp)
             that.couponNumber = temp
             that.loading = false
           })

@@ -46,7 +46,7 @@
           </el-form-item>
           <el-form-item>
             <div style="width: 25px"/>
-            <el-button type="primary" @click="register(formRef)" >注册</el-button>
+            <el-button type="primary" @click="register(formRef)">注册</el-button>
           </el-form-item>
         </el-form>
       </div>

@@ -26,7 +26,7 @@
       <el-menu-item index="coupon">你的满减券</el-menu-item>
       <el-menu-item index="redeem">满减券兑换</el-menu-item>
     </el-sub-menu>
-    <el-menu-item index="4">
+    <el-menu-item index="order">
       <el-icon>
         <ShoppingTrolley/>
       </el-icon>

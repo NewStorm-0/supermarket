@@ -6,7 +6,6 @@ import UserRegister from "../views/UserRegister.vue"
 import UserPage from "../views/UserPage.vue"
 
 import InitHome from "../views/InitHome.vue"
-import UserPurchaseQuery from "../views/PurchaseQuery.vue"
 import UserTradeQuery from "../views/TradeQuery.vue"
 
 const router = createRouter({
@@ -51,6 +50,11 @@ const router = createRouter({
                     path: 'redeem',
                     name: 'UserRedeem',
                     component: () => import('../components/user/UserRedeem.vue')
+                },
+                {
+                    path: 'order',
+                    name: 'UserOrder',
+                    component: () => import('../components/user/UserOrder.vue')
                 }
             ]
         },
@@ -71,11 +75,6 @@ const router = createRouter({
             path: '/',
             name: "InitHome",
             component: InitHome
-        },
-        {
-            path: '/user/:account/purchase',
-            name: "PurchaseQuery",
-            component: UserPurchaseQuery
         },
         {
             path: '/user/:account/trade',

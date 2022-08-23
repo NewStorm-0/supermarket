@@ -36,7 +36,7 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .my-el-aside {
   height: auto;
-  min-height: 550px;
+  min-height: 336px;
   background-color: rgba(205, 214, 222, 0.6);
   border-radius: 5px;
 }
