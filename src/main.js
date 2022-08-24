@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
-import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import App from './App.vue'
@@ -50,7 +49,6 @@ import service from "./utils/request";
  * 设置axios请求的地址默认是'/api',这样根据第一步中配置的会将/api替
  * 换为'http://localhost:8080/'
  */
-axios.defaults.baseURL = "/api"
 
 const app = createApp(App)
 
@@ -84,5 +82,3 @@ app.use(createPinia())
 app.use(router)
 
 app.mount('#app')
-
-export default app.config.globalProperties.axios

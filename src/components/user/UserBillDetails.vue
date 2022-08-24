@@ -120,7 +120,6 @@ function formatNum(num) {
     <h1>流水查询</h1>
     <div class="wrapper" v-loading="loading">
       <el-table :data="currentBillDetailsData"
-                header-align="center"
                 highlight-current-row
                 stripe
                 lazy
@@ -132,7 +131,6 @@ function formatNum(num) {
         <el-table-column prop="type" label="事项备注" width="120"/>
       </el-table>
       <el-pagination
-          header-align="center"
           @size-change="size_change"
           @current-change="current_change"
           :current-page="currentPage"

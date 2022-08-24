@@ -43,22 +43,6 @@ export default {
                 }
               }
               that.loading = false
-
-              /**
-               * 测试
-               */
-              const jjj = []
-              for (let i = 0; i < 100; i++) {
-                jjj.push({
-                  time: i,
-                  id: i,
-                  paymentAmount: i,
-                  rewardPoints: i,
-                  couponInfo: i,
-                })
-              }
-              that.UserOrderList = jjj
-
             } else {
               ElMessage({
                 type: 'error',
@@ -178,7 +162,6 @@ export default {
     <el-table :data="UserOrderList"
               class="my-el-table"
               v-loading="loading"
-              header-align="center"
               max-height="calc(100vh - 200px)"
               highlight-current-row
               stripe
@@ -205,7 +188,6 @@ export default {
     <el-table :data="currentOrderCommoditiesList"
               class="commodity-table"
               v-loading="dialogTableLoading"
-              header-align="center"
               max-height="calc(60vh - 2rem)"
               highlight-current-row
               stripe

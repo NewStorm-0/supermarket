@@ -1,12 +1,11 @@
 <script setup>
-import {computed, inject, onMounted, ref} from "vue";
+import {computed, inject, onMounted, onUpdated, ref} from "vue";
 import axios2 from "../../utils/request2.js";
 import {format, subDays} from 'date-fns'
 
 defineExpose({
   name: "AdminIndex"
 })
-
 const todayRechargeData = ref([])
 const todayRechargeLoading = ref(true)
 axios2.get('/charge/administrator/between', {
@@ -56,6 +55,9 @@ onMounted(() => {
   myChart = echarts.init(consumptionChart.value, 'dark');
   // 使用刚指定的配置项和数据显示图表。
 })
+onUpdated(() => {
+  myChart = echarts.init(consumptionChart.value, 'dark');
+})
 
 const xAxis = []
 for (let i = 0; i < 7; i++) {
@@ -72,7 +74,7 @@ axios2.get('/order/administrator/between', {
 }, (data) => {
   lastWeekConsumptionData.value = data
   for (const date of xAxis) {
-    let sum = 1
+    let sum = 0
     for (const consumption of lastWeekConsumptionData.value) {
       if (format(consumption.time, 'yyyy-MM-dd') === date) {
         sum += consumption.paymentAmount

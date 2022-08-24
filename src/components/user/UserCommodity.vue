@@ -55,7 +55,6 @@ function search() {
     <el-table :data="showList"
               class="commodity-table"
               v-loading="loading"
-              header-align="center"
               max-height="calc(60vh - 2rem)"
               highlight-current-row
               stripe
