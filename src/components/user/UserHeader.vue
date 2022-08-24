@@ -66,6 +66,7 @@ defineExpose({
           size="large"
           v-model="isDark"
           inline-prompt
+          class="my-switch"
           active-icon="Moon"
           inactive-icon="Sunny"
           @change="toggleDark"
@@ -118,5 +119,9 @@ div .my-content {
   text-align: center;
   line-height: 60px;
   font-weight: normal;
+}
+
+.my-switch {
+  --el-switch-on-color: #424242;
 }
 </style>

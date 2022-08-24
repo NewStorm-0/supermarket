@@ -4,7 +4,6 @@
 -->
 <script>
 import {ElMessage} from "element-plus";
-import {watch} from "vue";
 
 export default {
   name: 'UserOrder',

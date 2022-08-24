@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import UserLogin from '../components/user/UserLogin.vue'
+import UserLogin from '../views/UserLogin.vue'
 import NotFound from "../views/NotFound.vue"
 import UserIndex from "../components/user/UserIndex.vue"
 import UserRegister from "../views/UserRegister.vue"
@@ -84,6 +84,28 @@ const router = createRouter({
             name: "InitHome",
             component: InitHome
         },
+        {
+            path: '/administrator/login',
+            name: 'AdminLogin',
+            component: () => import('../views/AdminLogin.vue')
+        },
+        {
+            path: '/administrator',
+            name: 'AdminPage',
+            component: () => import('../views/AdminPage.vue'),
+            children: [
+                {
+                    path: 'index',
+                    name: 'AdminIndex',
+                    component: () => import('../components/administrator/AdminIndex.vue')
+                },
+                {
+                    path: 'user_management',
+                    name: 'AdminUserManagement',
+                    component: () => import('../components/administrator/AdminUserManagement.vue')
+                }
+            ]
+        }
     ]
 })
 

@@ -1,16 +1,14 @@
 <script setup>
-import {ref, reactive, inject} from 'vue'
-import {ElMessage} from 'element-plus'
-import {useRouter} from 'vue-router'
-import {userStore} from "../../stores/userStore";
-import Header from "./UserHeader.vue";
-
-const router = useRouter()
+import Header from '../components/administrator/AdminHeader.vue'
+import {inject} from "vue";
+import {ElMessage} from "element-plus";
+import {useRouter} from "vue-router";
+import {reactive, ref} from "vue";
 
 defineExpose({
-  name: 'UserLogin'
+  name: "AdminLogin"
 })
-
+const router = useRouter()
 const form = ref({
   account: '',
   password: '',
@@ -20,14 +18,8 @@ const rules = reactive({
   account: [
     {
       required: true,
-      message: '请输入卡号',
+      message: '请输入账号',
       trigger: 'blur',
-    },
-    {
-      min: 8,
-      max: 8,
-      message: '卡号长度应该为8位',
-      trigger: 'blur'
     }
   ],
   password: [
@@ -46,44 +38,22 @@ const rules = reactive({
 })
 
 const ruleFormRef = ref()
-const axios = inject('axios')  // inject axios
+
+const axios = inject('axios')
 
 async function login(formEl) {
   if (!formEl) return
   await formEl.validate((valid, fields) => {
     if (valid) {
       console.log('submit', fields)
-      axios.post('/user/login', form.value)
+      axios.post('/administrator/login', form.value)
           .then(function (response) {
             //console.log(response)
             if (response.state === 0) {
-              sessionStorage.setItem('user', JSON.stringify(response.data.user))
               sessionStorage.setItem('token', response.data.authorization)
-              //再次发出请求去请求会员等级信息
-              axios.get('/membership_level/all')
-                  .then(function (levelResponse) {
-                    //console.log(levelResponse)
-                    if (levelResponse.state === 0) {
-                      sessionStorage.setItem('membership_level_all', JSON.stringify(levelResponse.data))
-                      userStore.value.user = response.data.user
-                      userStore.value.membershipLevel = levelResponse.data
-                      router.push({
-                        name: "UserIndex",
-                        params: {
-                          account: response.data.user.account
-                        }
-                      })
-                    } else {
-                      ElMessage({
-                        showClose: true,
-                        message: response.message,
-                        type: 'error'
-                      })
-                    }
-                  })
-                  .catch(function (error) {
-                    console.log(error)
-                  })
+              router.push({
+                name: 'AdminIndex'
+              })
             } else {
               ElMessage({
                 showClose: true,
@@ -105,7 +75,6 @@ async function login(formEl) {
     }
   })
 }
-
 </script>
 
 <template>
@@ -123,8 +92,8 @@ async function login(formEl) {
       </router-link>
       <div class="border-div">
         <el-form :model="form" :rules="rules" ref="ruleFormRef" class="my-form">
-          <el-form-item class="my-form-item" label="卡号" prop="account">
-            <el-input v-model="form.account" maxlength="8" @input="form.account=form.account.replace(/\D/,'')"/>
+          <el-form-item class="my-form-item" label="账号" prop="account">
+            <el-input v-model="form.account"/>
           </el-form-item>
           <el-form-item label="密码" prop="password">
             <el-input v-model="form.password" type="password" show-password maxlength="25"/>
@@ -141,7 +110,6 @@ async function login(formEl) {
       </div>
     </el-main>
   </el-container>
-
 </template>
 
 <style scoped>
