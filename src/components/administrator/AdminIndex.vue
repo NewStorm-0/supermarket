@@ -1,5 +1,5 @@
 <script setup>
-import {computed, inject, onMounted, onUpdated, ref} from "vue";
+import {computed, inject, onMounted, ref} from "vue";
 import axios2 from "../../utils/request2.js";
 import {format, subDays} from 'date-fns'
 
@@ -54,9 +54,6 @@ onMounted(() => {
   // 基于准备好的dom，初始化echarts实例
   myChart = echarts.init(consumptionChart.value, 'dark');
   // 使用刚指定的配置项和数据显示图表。
-})
-onUpdated(() => {
-  myChart = echarts.init(consumptionChart.value, 'dark');
 })
 
 const xAxis = []

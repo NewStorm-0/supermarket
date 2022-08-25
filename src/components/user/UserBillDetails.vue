@@ -75,6 +75,8 @@ export default {
                     }
                   })
                   that.loading = false
+                } else {
+                  ElMessage.error(response[2].message)
                 }
               } else {
                 ElMessage.error(response[1].message)
