@@ -26,7 +26,7 @@ const adminLocation = computed(() => {
       </el-icon>
       <span>用户管理</span>
     </el-menu-item>
-    <el-menu-item index="sm">
+    <el-menu-item index="order">
       <el-icon>
         <List/>
       </el-icon>
@@ -44,7 +44,7 @@ const adminLocation = computed(() => {
       </el-icon>
       <span>满减券管理</span>
     </el-menu-item>
-    <el-menu-item index="order">
+    <el-menu-item index="ordr">
       <el-icon>
         <Shop/>
       </el-icon>

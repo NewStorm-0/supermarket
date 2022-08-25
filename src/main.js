@@ -68,7 +68,7 @@ app.provide('echarts', app.config.globalProperties.echarts)
  * 引入element-plus UI
  */
 app.use(ElementPlus, {
-    local: zhCn
+    locale: zhCn
 })
 
 /**

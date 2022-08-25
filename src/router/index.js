@@ -103,6 +103,11 @@ const router = createRouter({
                     path: 'user_management',
                     name: 'AdminUserManagement',
                     component: () => import('../components/administrator/AdminUserManagement.vue')
+                },
+                {
+                    path: 'order',
+                    name: 'AdminOrder',
+                    component: () => import('../components/administrator/AdminOrder.vue')
                 }
             ]
         }
