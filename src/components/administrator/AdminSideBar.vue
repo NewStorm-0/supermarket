@@ -38,7 +38,7 @@ const adminLocation = computed(() => {
       </el-icon>
       <span>VIP管理</span>
     </el-menu-item>
-    <el-menu-item index="privilege">
+    <el-menu-item index="coupon">
       <el-icon>
         <Edit/>
       </el-icon>

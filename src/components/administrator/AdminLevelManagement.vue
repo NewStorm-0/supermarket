@@ -153,6 +153,7 @@ const rules = ref({
             :precision="2"
             :step="100"
             :max="999999999"
+            :min="0"
             style="width: 200px"
         />
       </el-form-item>
@@ -164,6 +165,7 @@ const rules = ref({
             :max="1"
             :min="0"
             style="width: 200px"
+            step-strictly
         />
       </el-form-item>
       <el-form-item>

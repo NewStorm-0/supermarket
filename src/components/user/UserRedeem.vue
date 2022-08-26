@@ -31,6 +31,7 @@ const couponNumber = ref(1)
 let couponType = null
 
 function chooseType(type) {
+  couponNumber.value = 1
   couponType = type
   chooseNumberDialogVisible.value = true
 }
@@ -108,7 +109,14 @@ function redeem() {
   <el-dialog v-model="chooseNumberDialogVisible" title="请输入以下信息" width="30%">
     <el-form :inline="true">
       <el-form-item label="兑换数量">
-        <el-input-number v-model="couponNumber" :min="1" :max="99"/>
+        <el-input-number
+            v-model="couponNumber"
+            :min="1"
+            :max="99"
+            :step="1"
+            :precision="0"
+            step-strictly
+        />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="redeem">确认</el-button>

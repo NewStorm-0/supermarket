@@ -113,6 +113,11 @@ const router = createRouter({
                     path: 'level',
                     name: 'AdminLevelManagement',
                     component: () => import('../components/administrator/AdminLevelManagement.vue')
+                },
+                {
+                    path: 'coupon',
+                    name: 'AdminCouponManagement',
+                    component: () => import('../components/administrator/AdminCouponManagement.vue')
                 }
             ]
         }
