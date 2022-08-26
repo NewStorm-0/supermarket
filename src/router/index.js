@@ -118,6 +118,11 @@ const router = createRouter({
                     path: 'coupon',
                     name: 'AdminCouponManagement',
                     component: () => import('../components/administrator/AdminCouponManagement.vue')
+                },
+                {
+                    path: 'commodity',
+                    name: 'AdminCommodityManagement',
+                    component: () => import('../components/administrator/AdminCommodityManagement.vue')
                 }
             ]
         }

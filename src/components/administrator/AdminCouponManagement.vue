@@ -1,7 +1,7 @@
 <script setup>
 import axios2 from "../../utils/request2";
 import {ref} from "vue";
-import {ElMessage} from "element-plus";
+import {ElMessage, ElMessageBox} from "element-plus";
 
 defineExpose({
   name: "AdminCouponManagement"
@@ -49,18 +49,30 @@ function submitAddCoupon() {
 }
 
 function deleteCoupon(type) {
-  axios2.get('/coupon/delete', {
-    params: {
-      couponId: type
-    }
-  }, () => {
-    for (let i = 0; i < couponsData.value.length; i++) {
-      if (couponsData.value[i].type === type) {
-        couponsData.value.splice(i, 1)
-        break
+  ElMessageBox.confirm(
+      '确认删除该满减券？',
+      '警告',
+      {
+        confirmButtonText: '确认',
+        cancelButtonText: '取消',
+        type: 'warning',
       }
-    }
-    ElMessage.success('删除成功')
+  ).then(() => {
+    axios2.get('/coupon/delete', {
+      params: {
+        couponId: type
+      }
+    }, () => {
+      for (let i = 0; i < couponsData.value.length; i++) {
+        if (couponsData.value[i].type === type) {
+          couponsData.value.splice(i, 1)
+          break
+        }
+      }
+      ElMessage.success('删除成功')
+    })
+  }).catch(() => {
+    ElMessage.info('取消删除')
   })
 }
 </script>
@@ -177,5 +189,6 @@ html.dark .box-card {
 .my-button {
   float: left;
   margin-left: 12px;
+  margin-right: -800px;
 }
 </style>
