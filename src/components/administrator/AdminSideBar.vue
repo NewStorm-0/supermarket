@@ -32,7 +32,7 @@ const adminLocation = computed(() => {
       </el-icon>
       <span>订单查询</span>
     </el-menu-item>
-    <el-menu-item index="information">
+    <el-menu-item index="level">
       <el-icon>
         <Trophy/>
       </el-icon>

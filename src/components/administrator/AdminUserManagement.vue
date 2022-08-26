@@ -63,12 +63,13 @@ async function submitChangeUser(formEl) {
   await ElMessageBox.prompt('请输入当前管理员密码', '提示', {
     confirmButtonText: '确认',
     cancelButtonText: '取消',
+    inputType: 'password'
   })
       .then(({value}) => {
         axios2.post('/administrator/change/user', {
           user: changeUserData.value,
           password: value
-        }, (data) => {
+        }, () => {
           for (const userListElement of userList.value) {
             if (userListElement.account === changeUserData.value.account) {
               userListElement.name = changeUserData.value.name

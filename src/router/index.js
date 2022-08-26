@@ -108,6 +108,11 @@ const router = createRouter({
                     path: 'order',
                     name: 'AdminOrder',
                     component: () => import('../components/administrator/AdminOrder.vue')
+                },
+                {
+                    path: 'level',
+                    name: 'AdminLevelManagement',
+                    component: () => import('../components/administrator/AdminLevelManagement.vue')
                 }
             ]
         }
