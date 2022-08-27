@@ -5,6 +5,7 @@ import UserIndex from "../components/user/UserIndex.vue"
 import UserRegister from "../views/UserRegister.vue"
 import UserPage from "../views/UserPage.vue"
 import InitHome from "../views/InitHome.vue"
+import GenerateOrder from "../views/GenerateOrder.vue"
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -125,7 +126,12 @@ const router = createRouter({
                     component: () => import('../components/administrator/AdminCommodityManagement.vue')
                 }
             ]
-        }
+        },
+        {
+            path: '/checkout',
+            name: 'GenerateOrder',
+            component: GenerateOrder
+        },
     ]
 })
 

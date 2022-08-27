@@ -1,7 +1,7 @@
 <script setup>
 import {computed, inject, onMounted, ref} from "vue";
 import axios2 from "../../utils/request2.js";
-import {format, subDays} from 'date-fns'
+import {addDays, format, parseISO, subDays} from 'date-fns'
 
 defineExpose({
   name: "AdminIndex"
@@ -11,7 +11,7 @@ const todayRechargeLoading = ref(true)
 axios2.get('/charge/administrator/between', {
   params: {
     startDate: format(new Date(), 'yyyy-MM-dd'),
-    endDate: format(new Date(), 'yyyy-MM-dd')
+    endDate: format(addDays(new Date(), 1), 'yyyy-MM-dd')
   }
 }, (response) => {
   todayRechargeData.value = response
@@ -31,7 +31,7 @@ const todayConsumptionLoading = ref(true)
 axios2.get('/order/administrator/between', {
   params: {
     startDate: format(new Date(), 'yyyy-MM-dd'),
-    endDate: format(new Date(), 'yyyy-MM-dd')
+    endDate: format(addDays(new Date(), 1), 'yyyy-MM-dd')
   }
 }, (data) => {
   todayConsumptionData.value = data
@@ -66,14 +66,14 @@ const lastWeekConsumptionLoading = ref(true)
 axios2.get('/order/administrator/between', {
   params: {
     startDate: format(subDays(new Date(), 6), 'yyyy-MM-dd'),
-    endDate: format(new Date(), 'yyyy-MM-dd')
+    endDate: format(addDays(new Date(), 1), 'yyyy-MM-dd')
   }
 }, (data) => {
   lastWeekConsumptionData.value = data
   for (const date of xAxis) {
     let sum = 0
     for (const consumption of lastWeekConsumptionData.value) {
-      if (format(consumption.time, 'yyyy-MM-dd') === date) {
+      if (format(parseISO(consumption.time), 'yyyy-MM-dd') === date) {
         sum += consumption.paymentAmount
       }
     }
