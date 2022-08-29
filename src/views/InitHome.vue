@@ -34,7 +34,7 @@ export default {
 <style scoped>
 .chose_container {
   text-align: center;
-  background:url("src/assets/BackgroundPicture.jpg");
+  background:url("../assets/BackgroundPicture.jpg");
   width: 100%;
   height: 100%;
   position:fixed;

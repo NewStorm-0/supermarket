@@ -32,7 +32,8 @@ export default {
             if (response[1].state === 0) {
               for (const userCouponResponse of response[1].data) {  // 会员持有的
                 for (const couponInfoResponse of response[0].data) {  // 所有的满减券信息
-                  if (userCouponResponse.couponType === couponInfoResponse.type) {
+                  if (userCouponResponse.couponType === couponInfoResponse.type &&
+                      userCouponResponse.quantity > 0) {
                     that.userCoupon.push({
                       id: userCouponResponse.id,
                       couponType: userCouponResponse.couponType,
